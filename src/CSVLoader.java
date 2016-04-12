@@ -75,17 +75,19 @@ public class CSVLoader {
                     awayGoalsAgainst = Integer.valueOf(result[4]);
                     awayShoots = Integer.valueOf(result[12]);
                 }
-                if (hash.find(homeTeam)==null){
+                Team h = hash.find(homeTeam.hashCode(),homeTeam);
+                if (h==null){
                     homeTeam.addHomeStats(homeWin, homeDraw, homeLose, homeGoalsFor, homeGoalsAgainst, homeShoots);
-                    hash.addKey(homeTeam);
+                    hash.addKey(homeTeam.hashCode(), homeTeam);
                 } else{
-                    hash.find(homeTeam).addHomeStats(homeWin, homeDraw, homeLose, homeGoalsFor, homeGoalsAgainst, homeShoots);
+                    hash.find(homeTeam.hashCode(),homeTeam).addHomeStats(homeWin, homeDraw, homeLose, homeGoalsFor, homeGoalsAgainst, homeShoots);
                 }
-                if (hash.find(awayTeam)==null){
+                Team a = hash.find(awayTeam.hashCode(), awayTeam);
+                if (a==null){
                     awayTeam.addAwayStats(awayWin, awayDraw, awayLose, awayGoalsFor, awayGoalsAgainst, awayShoots);
-                    hash.addKey(awayTeam);
+                    hash.addKey(awayTeam.hashCode(), awayTeam);
                 } else{
-                    hash.find(awayTeam).addAwayStats(awayWin, awayDraw, awayLose, awayGoalsFor, awayGoalsAgainst, awayShoots);
+                    hash.find(awayTeam.hashCode(), awayTeam).addAwayStats(awayWin, awayDraw, awayLose, awayGoalsFor, awayGoalsAgainst, awayShoots);
                 }
                 i++;
                 line = br.readLine();

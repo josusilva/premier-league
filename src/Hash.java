@@ -1,55 +1,74 @@
+import org.omg.CORBA.Object;
+
 /**
  * Created by josue on 09/04/16.
  */
 public class Hash<E> {
 
-    private HashNode<E> first=null;
-    private HashNode<E> last=null;
+    private HashNode[] hash;
     private int size;
 
     public Hash(int size) {
         this.size = size;
-        for (int i = 0; i < size; i++) {
-            HashNode<E> temp = new HashNode<>();
-            temp.setNext(first);
-            first = temp;
-            if (i == 0) {
-                last = first;
+        hash = new HashNode[this.size];
+        for (int i = 0; i<size; i++){
+            hash[i]= null;
+        }
+    }
 
+    public void addKey(int hashCode, E element){
+        int key = hashCode%size;
+        if (hash[key]==null){
+            HashNode temp = new HashNode();
+            temp.setElement(element);
+            hash[key] = temp;
+        }
+        else{
+            for (int i=key+1; i<size; i++){
+                if (hash[i]==null){
+                    HashNode temp = new HashNode();
+                    temp.setElement(element);
+                    hash[i] = temp;
+                    break;
+                }
+            }
+            for (int i=0; i<key; i++){
+                HashNode temp = new HashNode();
+                temp.setElement(element);
+                hash[i] = temp;
+                break;
             }
         }
     }
 
-    public E find (E element) {
-        if (element.equals(first.getElement())) {
-            return first.getElement();
+    public E find(int hashCode, E element) {
+        int key = hashCode % size;
+        if (hash[key] == null) {
+            return null;
         } else {
-            HashNode current = first.getNext();
-            while (current != null) {
-                if (element.equals(current.getElement())) {
-                    return (E) current.getElement();
+            if (element.equals((E) hash[key].getElement())) {
+                return (E) hash[key].getElement();
+            } else {
+                for (int i = key + 1; i < size; i++) {
+                    if (hash[i] == null) {
+                        return null;
+                    } else if (element.equals((E) hash[i].getElement())) {
+                        return (E) hash[i].getElement();
+                    }
                 }
-                current = current.getNext();
+                for (int j = 0; j < key; j++) {
+                    if (hash[j] == null) {
+                        return null;
+                    } else if (element.equals((E) hash[j].getElement())) {
+                        return (E) hash[j].getElement();
+                    }
+                }
             }
         }
         return null;
     }
 
-    public void addKey(E element){
-            if (first.getElement()==null){
-                first.setElement(element);
-            }else if (last.getElement()==null) {
-                last.setElement(element);
-            }else{
-                HashNode current = first.getNext();
-                while (current != null) {
-                    if (current.getElement()==null) {
-                        current.setElement(element);
-                        break;
-                    }
-                    current = current.getNext();
-                }
 
-            }
-    }
+
+
 }
