@@ -166,4 +166,11 @@ public class Team {
     }
 
 
+    public int hashCode() {
+        int hash = 0;
+        for (int i = 1; i < name.length(); i++){
+            hash = hash+name.charAt(i);
+        }
+        return hash;
+    }
 }

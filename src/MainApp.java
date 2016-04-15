@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthScrollBarUI;
 import java.util.ArrayList;
 
 /**
@@ -7,23 +8,24 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-
-
-
         System.out.println("Premier League Statitcs");
 
+        //testes do loader e do hash
         Hash<Team> test = new Hash<>(20);
 
-        CSVLoader loader = new CSVLoader();
-        loader.loadCSV("/home/josue/IdeaProjects/Premier League Standings/E0.csv", test);
+       CSVLoader loader = new CSVLoader();
+       loader.loadCSV("/home/josue/IdeaProjects/Premier League Standings/E0.csv", test);
+
+        Team a = new Team ("Man United");
 
 
-        Team homeTeam = new Team("West Ham");
+        Team b = test.find(a.hashCode(), a);
 
-
-        System.out.println(test.find(homeTeam).toString());
-
-
+        if (b == null){
+            System.out.println("Time não encontrado");
+        } else {
+            System.out.println(test.find(a.hashCode(), a).toString());
+        }
 
     }
 }
