@@ -134,24 +134,32 @@ public class Team {
         return homeGoalsAgainst + awayGoalsAgainst;
     }
 
+    public int getTotalMatchesPlayed(){return matchesPlayedHome+matchesPlayedAway;}
+
     @Override
     public String toString() {
-        return "Team{" +
-                "name='" + name + '\'' +
-                ", matchesPlayedHome=" + matchesPlayedHome +
-                ", matchesPlayedAway=" + matchesPlayedAway +
-                ", homeWin=" + homeWin +
-                ", awayWin=" + awayWin +
-                ", homeDraw=" + homeDraw +
-                ", awayDraw=" + awayDraw +
-                ", homeLose=" + homeLose +
-                ", awayLose=" + awayLose +
-                ", homeGoalsFor=" + homeGoalsFor +
-                ", homeGoalsAgainst=" + homeGoalsAgainst +
-                ", awayGoalsFor=" + awayGoalsFor +
-                ", awayGoalsAgainst=" + awayGoalsAgainst +
-                ", Total Points" + getPoints() +
-                '}';
+        return "Nome:'" + name + "\n" +
+                "Partidas Jogadas: "+ getTotalMatchesPlayed()+"\n"+
+                "\n"+
+                "Jogos em Casa \n"+
+                "Vitórias: "+homeWin+"\n"+
+                "Empates: "+homeDraw+"\n"+
+                "Derrotas: "+homeLose+"\n"+
+                "Gols Pró: "+homeGoalsFor+"\n"+
+                "Gols Contra: "+homeGoalsAgainst+"\n"+
+                "\n"+
+                "Jogos Fora \n"+
+                "Vitórias: "+awayWin+"\n"+
+                "Empates: "+awayDraw+"\n"+
+                "Derrotas: "+awayLose+"\n"+
+                "Gols Pró: "+awayGoalsFor+"\n"+
+                "Gols Contra: "+awayGoalsAgainst+"\n"+
+                "\n"+
+                "Total \n"+
+                "Gols Pró:"+getTotalGoalsFor()+"\n"+
+                "Goal Contra:"+getTotalGoalsAgainst()+"\n"+
+                "Saldo de Gols: "+getGoalDifference()+"\n"+
+                "Pontos: "+getPoints();
     }
 
     @Override

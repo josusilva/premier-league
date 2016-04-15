@@ -68,7 +68,8 @@ public class Hash<E> {
         return null;
     }
 
-
-
+    public HashNode[] getArray(){
+        return hash;
+    }
 
 }
