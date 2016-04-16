@@ -46,7 +46,6 @@ public class MainApp {
                 JOptionPane.showMessageDialog(null, "Opção Inválida", "Premier League", JOptionPane.INFORMATION_MESSAGE);
             }
 
-
         }
     }
 }

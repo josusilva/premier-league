@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -36,11 +37,22 @@ public class CSVLoader {
                 int homeGoalsAgainst=0;
                 int awayGoalsFor=0;
                 int awayGoalsAgainst=0;
+                int homeWinHT=0;
+                int awayWinHT=0;
+                int homeDrawHT=0;
+                int awayDrawHT=0;
+                int homeLoseHT=0;
+                int awayLoseHT=0;
+                int homeGoalsForHT=0;
+                int homeGoalsAgainstHT=0;
+                int awayGoalsForHT=0;
+                int awayGoalsAgainstHT=0;
                 int homeShoots=0;
                 int awayShoots=0;
                 result = line.split(",");
                 Team homeTeam = new Team(result[2]);
                 Team awayTeam = new Team(result[3]);
+                //RESULTADO FINAL
                 if (result[6].charAt(0)=='H'){
                     //home
                     homeWin++;
@@ -75,19 +87,53 @@ public class CSVLoader {
                     awayGoalsAgainst = Integer.valueOf(result[4]);
                     awayShoots = Integer.valueOf(result[12]);
                 }
+                //PRIMEIRO TEMO
+                if (result[9].charAt(0)=='H'){
+                    //home
+                    homeWinHT++;
+                    homeGoalsForHT = Integer.valueOf(result[7]);
+                    homeGoalsAgainstHT = Integer.valueOf(result[8]);
+                    //away
+                    awayLoseHT++;
+                    awayGoalsForHT = Integer.valueOf(result[8]);
+                    awayGoalsAgainstHT = Integer.valueOf(result[7]);
+                } else if (result[9].charAt(0)=='A'){
+                    //home
+                    homeLoseHT++;
+                    homeGoalsForHT = Integer.valueOf(result[7]);
+                    homeGoalsAgainstHT = Integer.valueOf(result[8]);
+                    //away
+                    awayWinHT++;
+                    awayGoalsForHT = Integer.valueOf(result[8]);
+                    awayGoalsAgainstHT = Integer.valueOf(result[7]);
+                } else{
+                    //home
+                    homeDrawHT++;
+                    homeGoalsForHT = Integer.valueOf(result[7]);
+                    homeGoalsAgainstHT = Integer.valueOf(result[8]);
+                    //away
+                    awayDrawHT++;
+                    awayGoalsForHT = Integer.valueOf(result[8]);
+                    awayGoalsAgainstHT = Integer.valueOf(result[7]);
+                }
+
                 Team h = hash.find(homeTeam.hashCode(),homeTeam);
                 if (h==null){
                     homeTeam.addHomeStats(homeWin, homeDraw, homeLose, homeGoalsFor, homeGoalsAgainst, homeShoots);
+                    homeTeam.addHomeStatsHT(homeWinHT, homeDrawHT, homeLoseHT, homeGoalsForHT, homeGoalsAgainstHT);
                     hash.addKey(homeTeam.hashCode(), homeTeam);
                 } else{
                     hash.find(homeTeam.hashCode(),homeTeam).addHomeStats(homeWin, homeDraw, homeLose, homeGoalsFor, homeGoalsAgainst, homeShoots);
+                    hash.find(homeTeam.hashCode(), homeTeam).addHomeStatsHT(homeWinHT, homeDrawHT, homeLoseHT, homeGoalsForHT, homeGoalsAgainstHT);
                 }
                 Team a = hash.find(awayTeam.hashCode(), awayTeam);
                 if (a==null){
                     awayTeam.addAwayStats(awayWin, awayDraw, awayLose, awayGoalsFor, awayGoalsAgainst, awayShoots);
+                    awayTeam.addAwayStatsHT(awayWinHT, awayDrawHT, awayLoseHT, awayGoalsForHT, awayGoalsAgainstHT);
                     hash.addKey(awayTeam.hashCode(), awayTeam);
                 } else{
                     hash.find(awayTeam.hashCode(), awayTeam).addAwayStats(awayWin, awayDraw, awayLose, awayGoalsFor, awayGoalsAgainst, awayShoots);
+                    hash.find(awayTeam.hashCode(), awayTeam).addAwayStatsHT(awayWinHT, awayDrawHT, awayLoseHT, awayGoalsForHT, awayGoalsAgainstHT);
                 }
                 i++;
                 line = br.readLine();
@@ -95,7 +141,7 @@ public class CSVLoader {
             br.close();
 
         }catch (Exception ex){
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Formato de Arquivo Inválido", "Premier League", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }

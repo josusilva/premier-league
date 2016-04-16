@@ -17,6 +17,18 @@ public class Team {
     private int awayGoalsFor;
     private int awayGoalsAgainst;
     private int shoots;
+    private int homeWinHT;
+    private int homeDrawHT;
+    private int homeLoseHT;
+    private int awayWinHT;
+    private int awayDrawHT;
+    private int awayLoseHT;
+    private int matchesPlayedHomeHT;
+    private int matchesPlayedAwayHT;
+    private int homeGoalsForHT;
+    private int homeGoalsAgainstHT;
+    private int awayGoalsForHT;
+    private int awayGoalsAgainstHT;
 
     public Team(String name) {
         this.name = name;
@@ -33,6 +45,18 @@ public class Team {
         this.awayGoalsFor = 0;
         this.awayGoalsAgainst = 0;
         this.shoots = 0;
+        this.homeWinHT = 0;
+        this.homeDrawHT = 0;
+        this.homeLoseHT = 0;
+        this.awayWinHT = 0;
+        this.awayDrawHT = 0;
+        this.awayLoseHT = 0;
+        this.matchesPlayedHomeHT = 0;
+        this.matchesPlayedAwayHT = 0;
+        this.homeGoalsForHT = 0;
+        this.homeGoalsAgainstHT = 0;
+        this.awayGoalsForHT = 0;
+        this.awayGoalsAgainstHT = 0;
     }
 
     public void addAwayStats(int awayWin, int awayDraw, int awayLose, int awayGoalsFor, int awayGoalsAgainst, int shoots) {
@@ -55,6 +79,28 @@ public class Team {
         this.homeLose = this.homeLose + homeLose;
         this.homeGoalsFor = this.homeGoalsFor + homeGoalsFor;
         this.homeGoalsAgainst = this.homeGoalsAgainst + homeGoalsAgainst;
+
+    }
+
+    public void addAwayStatsHT(int awayWin, int awayDraw, int awayLose, int awayGoalsFor, int awayGoalsAgainst) {
+
+        this.matchesPlayedAwayHT++;
+        this.awayWinHT = this.awayWinHT + awayWin;
+        this.awayDrawHT = this.awayDrawHT + awayDraw;
+        this.awayLoseHT = this.awayLoseHT + awayLose;
+        this.awayGoalsForHT = this.awayGoalsForHT + awayGoalsFor;
+        this.awayGoalsAgainstHT = this.awayGoalsAgainstHT + awayGoalsAgainst;
+
+    }
+
+    public void addHomeStatsHT(int homeWin, int homeDraw, int homeLose, int homeGoalsFor, int homeGoalsAgainst) {
+
+        this.matchesPlayedHomeHT++;
+        this.homeWinHT = this.homeWinHT + homeWin;
+        this.homeDrawHT = this.homeDrawHT + homeDraw;
+        this.homeLoseHT = this.homeLoseHT + homeLose;
+        this.homeGoalsForHT = this.homeGoalsForHT + homeGoalsFor;
+        this.homeGoalsAgainstHT = this.homeGoalsAgainstHT + homeGoalsAgainst;
 
     }
 
@@ -110,8 +156,64 @@ public class Team {
         return awayGoalsAgainst;
     }
 
+    public int getShoots() {
+        return shoots;
+    }
+
+    public int getHomeWinHT() {
+        return homeWinHT;
+    }
+
+    public int getHomeDrawHT() {
+        return homeDrawHT;
+    }
+
+    public int getHomeLoseHT() {
+        return homeLoseHT;
+    }
+
+    public int getAwayWinHT() {
+        return awayWinHT;
+    }
+
+    public int getAwayDrawHT() {
+        return awayDrawHT;
+    }
+
+    public int getAwayLoseHT() {
+        return awayLoseHT;
+    }
+
+    public int getMatchesPlayedHomeHT() {
+        return matchesPlayedHomeHT;
+    }
+
+    public int getMatchesPlayedAwayHT() {
+        return matchesPlayedAwayHT;
+    }
+
+    public int getHomeGoalsForHT() {
+        return homeGoalsForHT;
+    }
+
+    public int getHomeGoalsAgainstHT() {
+        return homeGoalsAgainstHT;
+    }
+
+    public int getAwayGoalsForHT() {
+        return awayGoalsForHT;
+    }
+
+    public int getAwayGoalsAgainstHT() {
+        return awayGoalsAgainstHT;
+    }
+
     public int getPoints() {
         return (((homeWin + awayWin) * 3) + ((homeDraw + awayDraw)));
+    }
+
+    public int getPointsHT() {
+        return (((homeWinHT + awayWinHT) * 3) + ((homeDrawHT + awayDrawHT)));
     }
 
     public int getGoalDifference() {
@@ -135,6 +237,30 @@ public class Team {
     }
 
     public int getTotalMatchesPlayed(){return matchesPlayedHome+matchesPlayedAway;}
+
+    public int getGoalDifferenceHT() {
+        return ((homeGoalsForHT + awayGoalsForHT) - (homeGoalsAgainstHT + awayGoalsAgainstHT));
+    }
+
+    public int getHomeGoalDifferenceHT() {
+        return (homeGoalsForHT - homeGoalsAgainstHT);
+    }
+
+    public int getAwayGoalDifferenceHT() {
+        return (awayGoalsForHT - awayGoalsAgainstHT);
+    }
+
+    public int getTotalGoalsForHT() {
+        return homeGoalsForHT + awayGoalsForHT;
+    }
+
+    public int getTotalGoalsAgainstHT() {
+        return homeGoalsAgainstHT + awayGoalsAgainstHT;
+    }
+
+    public int getTotalMatchesPlayedHT(){return matchesPlayedHomeHT+matchesPlayedAwayHT;}
+
+
 
     @Override
     public String toString() {
@@ -181,4 +307,6 @@ public class Team {
         }
         return hash;
     }
+
+
 }
