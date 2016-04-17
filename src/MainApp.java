@@ -1,3 +1,7 @@
+package code;
+/**
+ *  N�s (Giordano Trombetta, Josu� Silva, Fabio Junqueira), garantimos que: 
+ */
 import javax.swing.plaf.synth.SynthScrollBarUI;
 import java.util.ArrayList;
 
@@ -11,8 +15,8 @@ import javax.swing.JOptionPane;
 public class MainApp {
 
     public static void main(String[] args) {
-
-        Hash<Team> test = new Hash<>(20);
+        int size = 20;
+        Hash<Team> test = new Hash<>(size);
         CSVLoader loader = new CSVLoader();
         JFileChooser chooser = new JFileChooser();
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -21,7 +25,7 @@ public class MainApp {
         int resp = -1;
         while (resp != 0) {
             try {
-                resp = InputDialog.readInt("Operação a ser realizada:\n[1]-Pesquisar Clube\n[0]-Sair");
+                resp = InputDialog.readInt("Operação a ser realizada:\n[1]-Pesquisar Clube\n[2]- Ordenar os times com o total de pontos\n[0]-Sair");
                 switch (resp) {
                     case 0: {
                         break;
@@ -34,6 +38,17 @@ public class MainApp {
                         } else {
                             JOptionPane.showMessageDialog(null, test.find(teamFind.hashCode(), teamFind).toString(), "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
                         }
+                    }
+                    break;
+                    case 2: {
+                    	Team[] teams = new Team[size];
+                    	Heap heap = new Heap();
+                    	Helper help = new Helper();
+                    	for(int i = 0; i < size; i++){
+                    		teams[i] = (Team) test.getArray()[i].getElement();
+                    	}
+                    	heap.HeapSort(teams);
+                    	help.Writer(teams, "fixture");
                     }
                     break;
                     default: {

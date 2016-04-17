@@ -1,3 +1,7 @@
+package code;
+/**
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
+ */
 import javax.swing.*;
 import java.util.ArrayList;
 

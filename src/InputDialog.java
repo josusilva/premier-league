@@ -1,8 +1,7 @@
+package code;
 /**
- * Created by josue on 15/04/16.
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
  */
-
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

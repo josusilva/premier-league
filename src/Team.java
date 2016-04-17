@@ -1,5 +1,7 @@
+package code;
+
 /**
- * Created by josue on 09/04/16.
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
  */
 public class Team {
 
@@ -106,6 +108,10 @@ public class Team {
 
     public String getName() {
         return name;
+    }
+    
+    public int getMatchesPlayed(){
+    	return matchesPlayedHome + matchesPlayedAway;
     }
 
     public int getMatchesPlayedHome() {
