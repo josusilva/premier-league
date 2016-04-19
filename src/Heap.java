@@ -14,23 +14,23 @@ import java.util.Comparator;
 
 public class Heap {
 	
-	public <T extends Comparable<T>> Team[] HeapSort(Team[] teams, Comparator<Team> comparable){		
+	public <T extends Comparable<T>> Team[] heapSort(Team[] teams, Comparator<Team> comparable){		
 		int i;
 		int n = teams.length;
 		Team aux;		
 		for(i = ((n-1)/2); i >= 0; i--){
-			teams = CreateHeap(teams, i, n-1, comparable);
+			teams = createHeap(teams, i, n-1, comparable);
 		}
 		for (i = n -1; i >= 1; i--){
 			aux = teams[0];
 			teams[0] = teams[i];
 			teams[i] = aux;
-			teams = CreateHeap(teams, 0, i-1, comparable);
+			teams = createHeap(teams, 0, i-1, comparable);
 		}
 		return teams;
 	}
 
-	public Team[] CreateHeap(Team[] teams, int start, int end, Comparator<Team> comparable ){
+	public Team[] createHeap(Team[] teams, int start, int end, Comparator<Team> comparable ){
 		Team aux = teams[start];
 		int j = start * 2 + 1;
 				

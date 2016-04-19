@@ -17,9 +17,11 @@ import java.io.IOException;
 
 public class Helper {
 
-	public void WriteBestTeams(Team[] teams, String fileName){
+	private String filePath = "C:/Users/giordano.trombetta/Desktop/";
+			
+	public void writeBestTeams(Team[] teams, String fileName){
 		try {
-			File file = new File("C:/Users/giordano.trombetta/Desktop/"+fileName+".txt");
+			File file = new File(filePath + fileName + ".txt");
 			// 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -57,6 +59,29 @@ public class Helper {
 			}
 			
 			
+			bw.close();
+
+			System.out.println("Done");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void writeTopScorer(Team team, String fileName){
+		try {
+			File file = new File(filePath + fileName + ".txt");
+			// 
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			bw.write(String.format("%-12s %-2s %-5s %n", 
+			team.getName(), ", ", team.getTotalGoalsFor()));			
+					
 			bw.close();
 
 			System.out.println("Done");

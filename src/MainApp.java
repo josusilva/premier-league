@@ -13,7 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class MainApp {
-
+	
     public static void main(String[] args) {
         int size = 20;
         Hash<Team> test = new Hash<>(size);
@@ -25,7 +25,7 @@ public class MainApp {
         int resp = -1;
         while (resp != 0) {
             try {
-                resp = InputDialog.readInt("Operação a ser realizada:\n[1]-Pesquisar Clube\n[2]- Ordenar os times com o total de pontos\n[0]-Sair");
+                resp = InputDialog.readInt("Operação a ser realizada:\n[1]-Pesquisar Clube\n[2]- Ordenar os times com o total de pontos\n[3]- Clube que mais fez gols na temporada\n[0]-Sair");
                 switch (resp) {
                     case 0: {
                         break;
@@ -47,14 +47,25 @@ public class MainApp {
                     	for(int i = 0; i < size; i++){
                     		teams[i] = (Team) test.getArray()[i].getElement();
                     	}
-                    	heap.HeapSort(teams, new PointsComparator());
-                    	help.WriteBestTeams(teams, "fixture");
+                    	heap.heapSort(teams, new PointsComparator());
+                    	help.writeBestTeams(teams, "fixture");
                     	
-                    	heap.HeapSort(teams, new HTPointsComparator());
-                    	help.WriteBestTeams(teams, "fixture_ht");
+                    	heap.heapSort(teams, new HTPointsComparator());
+                    	help.writeBestTeams(teams, "fixture_ht");
                     	
                     }
                     break;
+                    case 3: {
+                    	Team[] teams = new Team[size];
+                    	Heap heap = new Heap();
+                    	Helper help = new Helper();
+                    	for(int i = 0; i < size; i++){
+                    		teams[i] = (Team) test.getArray()[i].getElement();
+                    	}
+                    	heap.heapSort(teams, new TopScorerComparator());
+                    	help.writeTopScorer(teams[size-1], "top scorer");
+                    }
+                    break;	
                     default: {
                         JOptionPane.showMessageDialog(null, "Operação inválida", "Premier League", JOptionPane.INFORMATION_MESSAGE);
                         break;
