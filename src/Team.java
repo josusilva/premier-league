@@ -1,7 +1,13 @@
 package code;
 
 /**
- *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que:
+ *  - Não utilizamos código fonte obtidos de outros estudantes,
+ *    ou fonte não autorizada, seja modificado ou cópia literal.
+ *  - Todo código usado em nosso trabalho é resultado do nosso
+ *    trabalho original, ou foi derivado de um
+ *    código publicado nos livros texto desta disciplina.
+ *  - Temos total ciência das consequências em caso de violarmos estes termos.
  */
 public class Team {
 
@@ -274,21 +280,21 @@ public class Team {
                 "Partidas Jogadas: "+ getTotalMatchesPlayed()+"\n"+
                 "\n"+
                 "Jogos em Casa \n"+
-                "VitÃ³rias: "+homeWin+"\n"+
+                "Vitórias: "+homeWin+"\n"+
                 "Empates: "+homeDraw+"\n"+
                 "Derrotas: "+homeLose+"\n"+
-                "Gols PrÃ³: "+homeGoalsFor+"\n"+
+                "Gols pró: "+homeGoalsFor+"\n"+
                 "Gols Contra: "+homeGoalsAgainst+"\n"+
                 "\n"+
                 "Jogos Fora \n"+
-                "VitÃ³rias: "+awayWin+"\n"+
+                "Vitórias: "+awayWin+"\n"+
                 "Empates: "+awayDraw+"\n"+
                 "Derrotas: "+awayLose+"\n"+
-                "Gols PrÃ³: "+awayGoalsFor+"\n"+
+                "Gols Pró: "+awayGoalsFor+"\n"+
                 "Gols Contra: "+awayGoalsAgainst+"\n"+
                 "\n"+
                 "Total \n"+
-                "Gols PrÃ³:"+getTotalGoalsFor()+"\n"+
+                "Gols Pró:"+getTotalGoalsFor()+"\n"+
                 "Goal Contra:"+getTotalGoalsAgainst()+"\n"+
                 "Saldo de Gols: "+getGoalDifference()+"\n"+
                 "Pontos: "+getPoints();

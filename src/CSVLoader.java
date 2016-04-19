@@ -1,14 +1,14 @@
 package code;
 /**
- *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que:
+ *  - Não utilizamos código fonte obtidos de outros estudantes,
+ *    ou fonte não autorizada, seja modificado ou cópia literal.
+ *  - Todo código usado em nosso trabalho é resultado do nosso
+ *    trabalho original, ou foi derivado de um
+ *    código publicado nos livros texto desta disciplina.
+ *  - Temos total ciência das consequências em caso de violarmos estes termos.
  */
 import javax.swing.*;
-import java.util.ArrayList;
-
-/**
- * Created by josue on 06/04/16.
- */
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,9 +27,7 @@ public class CSVLoader {
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             String result[] = line.split(",");
-            line = br.readLine();
-            int i = 1;
-            String temp = "";
+            line = br.readLine();          
             while (line != null){
                 int homeWin=0;
                 int awayWin=0;
@@ -138,8 +136,7 @@ public class CSVLoader {
                 } else{
                     hash.find(awayTeam.hashCode(), awayTeam).addAwayStats(awayWin, awayDraw, awayLose, awayGoalsFor, awayGoalsAgainst, awayShoots);
                     hash.find(awayTeam.hashCode(), awayTeam).addAwayStatsHT(awayWinHT, awayDrawHT, awayLoseHT, awayGoalsForHT, awayGoalsAgainstHT);
-                }
-                i++;
+                }                
                 line = br.readLine();
             }
             br.close();

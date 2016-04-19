@@ -1,6 +1,12 @@
 package code;
 /**
- *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que:
+ *  - Não utilizamos código fonte obtidos de outros estudantes,
+ *    ou fonte não autorizada, seja modificado ou cópia literal.
+ *  - Todo código usado em nosso trabalho é resultado do nosso
+ *    trabalho original, ou foi derivado de um
+ *    código publicado nos livros texto desta disciplina.
+ *  - Temos total ciência das consequências em caso de violarmos estes termos.
  */
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,9 +17,9 @@ import java.io.IOException;
 
 public class Helper {
 
-	public void Writer(Team[] teams, String fileName){
+	public void WriteBestTeams(Team[] teams, String fileName){
 		try {
-			File file = new File("C:/Users/Giordano/Desktop/"+fileName+".txt");
+			File file = new File("C:/Users/giordano.trombetta/Desktop/"+fileName+".txt");
 			// 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -22,10 +28,15 @@ public class Helper {
 			FileWriter fw = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
 			
-			bw.write(String.format("%-3s %-22s %-4s %-4s %-4s %-7s %-4s %-4s %-4s %-7s %-7s %-8s %-5s %-7s %n", 
-			" ", " ", "Pld", "W", "D", "L", "F:A    ", "W", "D", "L", "F:A     ", "   F:A  ", "+/-", "Pts"));			
+			bw.write(String.format("%-31s %-20s %-37s %-48s %n",
+			" ", "- Home -", " - Away -", " - Total -"
+			));
+			
+			bw.write(String.format("%-3s %-22s %-4s %-4s %-4s %-7s %-4s %-4s %-4s %-7s %-7s %-8s %-7s %-7s %n", 
+			" ", " ", "Pld", "W", "D", "L", "F:A    ", "W", "D", "L", "F:A     ", "   F:A  ", "   +/-", "  Pts"));			
 			int count = 1;
-			for (Team team : teams) {
+			for (int i = teams.length - 1; i >= 0; i --) {
+				Team team = teams[i];
 				bw.write(String.format("%-3s %-22s %-4s %-4s %-4s %-7s %-4s %-4s %-4s %-7s %-7s %-5s %-4s %-7s %n", 
 				count, 
 				team.getName(),
@@ -39,8 +50,8 @@ public class Helper {
 				team.getAwayLose(),
 				team.getAwayGoalsFor() +":"+team.getAwayGoalsAgainst() +"   ",
 				"   "+team.getTotalGoalsFor() +":"+team.getTotalGoalsAgainst()+"  ",
-				(team.getTotalGoalsFor() - team.getTotalGoalsAgainst()),
-				team.getPoints()
+				" " + (team.getTotalGoalsFor() - team.getTotalGoalsAgainst()),
+				"   "+team.getPoints()
 				));	
 				count++;
 			}

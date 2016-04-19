@@ -1,15 +1,12 @@
 package code;
+
 /**
  *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
  */
-import org.omg.CORBA.Object;
 
-/**
- * Created by josue on 09/04/16.
- */
 public class Hash<E> {
 
-    private HashNode[] hash;
+    private HashNode<E>[] hash;
     private int size;
 
     public Hash(int size) {
@@ -23,21 +20,21 @@ public class Hash<E> {
     public void addKey(int hashCode, E element){
         int key = hashCode%size;
         if (hash[key]==null){
-            HashNode temp = new HashNode();
+            HashNode<E> temp = new HashNode<E>();
             temp.setElement(element);
             hash[key] = temp;
         }
         else{
             for (int i=key+1; i<size; i++){
                 if (hash[i]==null){
-                    HashNode temp = new HashNode();
+                    HashNode<E> temp = new HashNode<E>();
                     temp.setElement(element);
                     hash[i] = temp;
                     break;
                 }
             }
-            for (int i=0; i<key; i++){
-                HashNode temp = new HashNode();
+            for (int i=0; i < key; i++){
+                HashNode<E> temp = new HashNode<E>();
                 temp.setElement(element);
                 hash[i] = temp;
                 break;
@@ -72,7 +69,7 @@ public class Hash<E> {
         return null;
     }
 
-    public HashNode[] getArray(){
+    public HashNode<E>[] getArray(){
         return hash;
     }
 
