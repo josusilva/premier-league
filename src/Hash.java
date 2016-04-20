@@ -1,7 +1,7 @@
-package code;
+
 
 /**
- *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
+ *  Nï¿½s (Giordano Trombetta, Josuï¿½ Silva, Fabio Junqueira), garantimos que: 
  */
 
 public class Hash<E> {
@@ -19,25 +19,31 @@ public class Hash<E> {
 
     public void addKey(int hashCode, E element){
         int key = hashCode%size;
+        int test = 0;
         if (hash[key]==null){
             HashNode<E> temp = new HashNode<E>();
             temp.setElement(element);
             hash[key] = temp;
         }
-        else{
-            for (int i=key+1; i<size; i++){
-                if (hash[i]==null){
+        else {
+            for (int i = key + 1; i < size; i++) {
+                if (hash[i] == null) {
                     HashNode<E> temp = new HashNode<E>();
                     temp.setElement(element);
                     hash[i] = temp;
+                    test = 1;
                     break;
                 }
             }
-            for (int i=0; i < key; i++){
-                HashNode<E> temp = new HashNode<E>();
-                temp.setElement(element);
-                hash[i] = temp;
-                break;
+            if (test == 0) {
+                for (int i = 0; i < key; i++) {
+                    if (hash[i] == null) {
+                        HashNode<E> temp = new HashNode<E>();
+                        temp.setElement(element);
+                        hash[i] = temp;
+                        break;
+                    }
+                }
             }
         }
     }

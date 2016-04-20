@@ -1,13 +1,13 @@
-package code;
+
 
 /**
- *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que:
- *  - Não utilizamos código fonte obtidos de outros estudantes,
- *    ou fonte não autorizada, seja modificado ou cópia literal.
- *  - Todo código usado em nosso trabalho é resultado do nosso
+ *  Nï¿½s (Giordano Trombetta, Josuï¿½ Silva, Fabio Junqueira), garantimos que:
+ *  - Nï¿½o utilizamos cï¿½digo fonte obtidos de outros estudantes,
+ *    ou fonte nï¿½o autorizada, seja modificado ou cï¿½pia literal.
+ *  - Todo cï¿½digo usado em nosso trabalho ï¿½ resultado do nosso
  *    trabalho original, ou foi derivado de um
- *    código publicado nos livros texto desta disciplina.
- *  - Temos total ciência das consequências em caso de violarmos estes termos.
+ *    cï¿½digo publicado nos livros texto desta disciplina.
+ *  - Temos total ciï¿½ncia das consequï¿½ncias em caso de violarmos estes termos.
  */
 public class Team {
 
@@ -280,21 +280,21 @@ public class Team {
                 "Partidas Jogadas: "+ getTotalMatchesPlayed()+"\n"+
                 "\n"+
                 "Jogos em Casa \n"+
-                "Vitórias: "+homeWin+"\n"+
+                "Vitï¿½rias: "+homeWin+"\n"+
                 "Empates: "+homeDraw+"\n"+
                 "Derrotas: "+homeLose+"\n"+
-                "Gols pró: "+homeGoalsFor+"\n"+
+                "Gols prï¿½: "+homeGoalsFor+"\n"+
                 "Gols Contra: "+homeGoalsAgainst+"\n"+
                 "\n"+
                 "Jogos Fora \n"+
-                "Vitórias: "+awayWin+"\n"+
+                "Vitï¿½rias: "+awayWin+"\n"+
                 "Empates: "+awayDraw+"\n"+
                 "Derrotas: "+awayLose+"\n"+
-                "Gols Pró: "+awayGoalsFor+"\n"+
+                "Gols Prï¿½: "+awayGoalsFor+"\n"+
                 "Gols Contra: "+awayGoalsAgainst+"\n"+
                 "\n"+
                 "Total \n"+
-                "Gols Pró:"+getTotalGoalsFor()+"\n"+
+                "Gols Prï¿½:"+getTotalGoalsFor()+"\n"+
                 "Goal Contra:"+getTotalGoalsAgainst()+"\n"+
                 "Saldo de Gols: "+getGoalDifference()+"\n"+
                 "Pontos: "+getPoints();
@@ -315,7 +315,7 @@ public class Team {
     public int hashCode() {
         int hash = 0;
         for (int i = 1; i < name.length(); i++){
-            hash = hash+name.charAt(i);
+            hash = 3*hash+name.charAt(i);
         }
         return hash;
     }

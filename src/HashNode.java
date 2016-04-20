@@ -1,6 +1,6 @@
-package code;
+
 /**
- *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
+ *  Nï¿½s (Giordano Trombetta, Josuï¿½ Silva, Fabio Junqueira), garantimos que: 
  */
 public class HashNode<E> {
 
