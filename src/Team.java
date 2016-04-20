@@ -1,14 +1,14 @@
-
-
+package code;
 /**
- *  Nï¿½s (Giordano Trombetta, Josuï¿½ Silva, Fabio Junqueira), garantimos que:
- *  - Nï¿½o utilizamos cï¿½digo fonte obtidos de outros estudantes,
- *    ou fonte nï¿½o autorizada, seja modificado ou cï¿½pia literal.
- *  - Todo cï¿½digo usado em nosso trabalho ï¿½ resultado do nosso
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que:
+ *  - Não utilizamos código fonte obtidos de outros estudantes,
+ *    ou fonte não autorizada, seja modificado ou cópia literal.
+ *  - Todo código usado em nosso trabalho é resultado do nosso
  *    trabalho original, ou foi derivado de um
- *    cï¿½digo publicado nos livros texto desta disciplina.
- *  - Temos total ciï¿½ncia das consequï¿½ncias em caso de violarmos estes termos.
+ *    código publicado nos livros texto desta disciplina.
+ *  - Temos total ciência das consequências em caso de violarmos estes termos.
  */
+
 public class Team {
 
     private String name;
@@ -143,6 +143,10 @@ public class Team {
     public int getAwayDraw() {
         return awayDraw;
     }
+    
+    public int getTotalLosses(){
+    	return homeLose + awayLose;
+    }
 
     public int getHomeLose() {
         return homeLose;
@@ -239,6 +243,10 @@ public class Team {
     public int getAwayGoalDifference() {
         return (awayGoalsFor - awayGoalsAgainst);
     }
+    
+    public int getGoalsPerShoots(){
+    	return shoots/this.getTotalGoalsFor();
+    }
 
     public int getTotalGoalsFor() {
         return homeGoalsFor + awayGoalsFor;
@@ -280,21 +288,21 @@ public class Team {
                 "Partidas Jogadas: "+ getTotalMatchesPlayed()+"\n"+
                 "\n"+
                 "Jogos em Casa \n"+
-                "Vitï¿½rias: "+homeWin+"\n"+
+                "Vitórias: "+homeWin+"\n"+
                 "Empates: "+homeDraw+"\n"+
                 "Derrotas: "+homeLose+"\n"+
-                "Gols prï¿½: "+homeGoalsFor+"\n"+
+                "Gols pró: "+homeGoalsFor+"\n"+
                 "Gols Contra: "+homeGoalsAgainst+"\n"+
                 "\n"+
                 "Jogos Fora \n"+
-                "Vitï¿½rias: "+awayWin+"\n"+
+                "Vitórias: "+awayWin+"\n"+
                 "Empates: "+awayDraw+"\n"+
                 "Derrotas: "+awayLose+"\n"+
-                "Gols Prï¿½: "+awayGoalsFor+"\n"+
+                "Gols Pró: "+awayGoalsFor+"\n"+
                 "Gols Contra: "+awayGoalsAgainst+"\n"+
                 "\n"+
                 "Total \n"+
-                "Gols Prï¿½:"+getTotalGoalsFor()+"\n"+
+                "Gols pró:"+getTotalGoalsFor()+"\n"+
                 "Goal Contra:"+getTotalGoalsAgainst()+"\n"+
                 "Saldo de Gols: "+getGoalDifference()+"\n"+
                 "Pontos: "+getPoints();

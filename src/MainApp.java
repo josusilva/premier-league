@@ -1,14 +1,14 @@
+package code;
 
 /**
- *  Nï¿½s (Giordano Trombetta, Josuï¿½ Silva, Fabio Junqueira), garantimos que:
- *  - Nï¿½o utilizamos cï¿½digo fonte obtidos de outros estudantes,
- *    ou fonte nï¿½o autorizada, seja modificado ou cï¿½pia literal.
- *  - Todo cï¿½digo usado em nosso trabalho ï¿½ resultado do nosso
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que:
+ *  - Não utilizamos código fonte obtidos de outros estudantes,
+ *    ou fonte não autorizada, seja modificado ou cópia literal.
+ *  - Todo código usado em nosso trabalho é resultado do nosso
  *    trabalho original, ou foi derivado de um
- *    cï¿½digo publicado nos livros texto desta disciplina.
- *  - Temos total ciï¿½ncia das consequï¿½ncias em caso de violarmos estes termos.
+ *    código publicado nos livros texto desta disciplina.
+ *  - Temos total ciência das consequências em caso de violarmos estes termos.
  */
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,7 @@ public class MainApp {
         int resp = -1;
         while (resp != 0) {
             try {
-                resp = InputDialog.readInt("Operaï¿½ï¿½o a ser realizada:\n[1]-Pesquisar Clube\n[2]- Ordenar os times com o total de pontos\n[3]- Clube que mais fez gols na temporada\n[0]-Sair");
+            	resp = InputDialog.readInt("Operação a ser realizada:\n[1]-Pesquisar Clube\n[2]- Ordenar os times com o total de pontos\n[3]- Clube que mais fez gols na temporada\n[4]- Clube que menos perdeu na temporada\n[5]- Melhor aproveitamento de gols/chutes\n[0]-Sair");
                 switch (resp) {
                     case 0: {
                         break;
@@ -34,7 +34,7 @@ public class MainApp {
                         Team team = new Team(JOptionPane.showInputDialog("Nome do Time:"));
                         Team teamFind = test.find(team.hashCode(), team);
                         if (teamFind == null) {
-                            JOptionPane.showMessageDialog(null, "Clube nï¿½o encontrado!", "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
+                        	JOptionPane.showMessageDialog(null, "Clube não encontrado!", "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             JOptionPane.showMessageDialog(null, test.find(teamFind.hashCode(), teamFind).toString(), "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -51,7 +51,7 @@ public class MainApp {
                     	help.writeBestTeams(teams, "fixture");
                     	
                     	heap.heapSort(teams, new HTPointsComparator());
-                    	help.writeBestTeams(teams, "fixture_ht");
+                    	help.writeBestTeamsHT(teams, "fixture_ht");
                     	
                     }
                     break;
@@ -63,23 +63,45 @@ public class MainApp {
                     		teams[i] = (Team) test.getArray()[i].getElement();
                     	}
                     	heap.heapSort(teams, new TopScorerComparator());
-                    	help.writeTopScorer(teams[size-1], "top scorer");
+                    	help.writeTopScorer(teams[size-1], "top_scorer");
                     }
                     break;	
+                    case 4: {
+                    	Team[] teams = new Team[size];
+                    	Heap heap = new Heap();
+                    	Helper help = new Helper();
+                    	for(int i = 0; i < size; i++){
+                    		teams[i] = (Team) test.getArray()[i].getElement();
+                    	}
+                    	heap.heapSort(teams, new LessDefeatsMinHeapComparator());
+                    	help.writeLessDefeats(teams[size-1], "less_defeats");
+                    }
+                    break;	
+                    case 5: {
+                    	Team[] teams = new Team[size];
+                    	Heap heap = new Heap();
+                    	Helper help = new Helper();
+                    	for(int i = 0; i < size; i++){
+                    		teams[i] = (Team) test.getArray()[i].getElement();
+                    	}
+                    	heap.heapSort(teams, new BestStrikersComparator());
+                    	help.writeBestStrikers(teams, "best_strikers");
+                    }
+                    break;
                     default: {
-                        JOptionPane.showMessageDialog(null, "Operaï¿½ï¿½o invï¿½lida", "Premier League", JOptionPane.INFORMATION_MESSAGE);
+                    	JOptionPane.showMessageDialog(null, "Operação inválida", "Premier League", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     }
 
                 }
             } catch (NullPointerException ex) {
-                JOptionPane.showMessageDialog(null, "Operaï¿½ï¿½o invï¿½lida", "Premier League", JOptionPane.INFORMATION_MESSAGE);
+            	JOptionPane.showMessageDialog(null, "Operação inválida", "Premier League", JOptionPane.INFORMATION_MESSAGE);
             }
 
         }
         Team a = new Team("Man City");
         System.out.println(a.hashCode()%20);
-     for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 20; i++){
          System.out.println(i+" "+(test.getArray()[i].getElement().getName())+" "+(test.getArray()[i].getElement().hashCode())%20);
      }
     }

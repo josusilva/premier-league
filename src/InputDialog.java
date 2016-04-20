@@ -1,6 +1,6 @@
-
+package code;
 /**
- *  Nï¿½s (Giordano Trombetta, Josuï¿½ Silva, Fabio Junqueira), garantimos que: 
+ *  Nós (Giordano Trombetta, Josué Silva, Fabio Junqueira), garantimos que: 
  */
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

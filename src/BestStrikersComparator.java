@@ -10,11 +10,11 @@ package code;
  */
 import java.util.Comparator;
 
-public class HTPointsComparator implements Comparator<Team> {
+public class BestStrikersComparator implements Comparator<Team> {
 	
 	@Override
 	public int compare (Team a, Team b){
-		return a.getPointsHT() < b.getPointsHT() ? -1 : a.getPointsHT() == b.getPointsHT() ? 0 : 1;
+		return a.getGoalsPerShoots() < b.getGoalsPerShoots() ? -1 : a.getGoalsPerShoots() == b.getGoalsPerShoots() ? 0 : 1;
 	}
 
 }

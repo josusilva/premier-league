@@ -8,13 +8,14 @@ package code;
  *    código publicado nos livros texto desta disciplina.
  *  - Temos total ciência das consequências em caso de violarmos estes termos.
  */
+
 import java.util.Comparator;
 
-public class HTPointsComparator implements Comparator<Team> {
+public class LessDefeatsMinHeapComparator implements Comparator<Team> {
 	
 	@Override
 	public int compare (Team a, Team b){
-		return a.getPointsHT() < b.getPointsHT() ? -1 : a.getPointsHT() == b.getPointsHT() ? 0 : 1;
+		return a.getTotalLosses() > b.getTotalLosses() ? -1 : a.getPoints() == b.getPoints() ? 0 : 1;
 	}
 
 }
